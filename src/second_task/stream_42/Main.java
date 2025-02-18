@@ -1,5 +1,8 @@
 package second_task.stream_42;
 
+import second_task.stream_42.animal.*;
+import second_task.stream_42.transport.*;
+
 public class Main {
     public static void main(String[] args) {
         Wool catWool = new Wool("Мягкая шерсть");
@@ -20,5 +23,18 @@ public class Main {
         Fish fish = new Fish(ocean);
         fish.move();
         System.out.println("Рыба живет в воде? " + fish.livesInWater());
+
+        System.out.println("****************************");
+
+        TransportSystem system = new TransportSystem();
+
+        system.addVehicle(new Airplane());
+        system.addVehicle(new Helicopter());
+        system.addVehicle(new Cutter());
+        system.addVehicle(new Tanker());
+        system.addVehicle(new Truck());
+        system.addVehicle(new Taxi());
+
+        system.showAllVehicles();
     }
 }
