@@ -1,5 +1,7 @@
 package fourth_task.stream_42;
 
+import fourth_task.stream_42.generics.MyArrayListGen;
+import fourth_task.stream_42.generics.MyLinkedListGen;
 import fourth_task.stream_42.my_implementation.MyArrayList;
 import fourth_task.stream_42.my_implementation.MyBubbleSorting;
 import fourth_task.stream_42.my_implementation.MyLinkedList;
@@ -143,6 +145,46 @@ public class Main {
 
         System.out.println("\n--------------------");
         System.out.println("Generics:");
+        MyArrayListGen<Double> myArrayListGen = new MyArrayListGen<>();
+        myArrayListGen.add(345d);
+        myArrayListGen.add(634.0);
+        myArrayListGen.add(978.5);
+        System.out.println("MyArrayListGen contains these elements: " + Arrays.toString(myArrayListGen.getElements()));
+        System.out.println("Second element is: " + myArrayListGen.get(1));
+
+        MyArrayListGen<Double> myArrayListGen1 = new MyArrayListGen<>();
+        myArrayListGen1.add(458D);
+        myArrayListGen1.add(346.3);
+        myArrayListGen1.add(354.7);
+
+        myArrayListGen.addAll(myArrayListGen1);
+        System.out.println(Arrays.toString(myArrayListGen.getElements()));
+
+        myArrayListGen.remove(0);
+        System.out.println(Arrays.toString(myArrayListGen.getElements()));
+
+        MyLinkedListGen<Integer> myLinkedListGen = new MyLinkedListGen<>();
+        myLinkedListGen.add(3245);
+        myLinkedListGen.add(718);
+        myLinkedListGen.add(89147);
+
+        myLinkedListGen.printAll();
+        System.out.println("First element: " +myLinkedListGen.get(0));
+
+        MyLinkedListGen<Integer> myLinkedListGen1 = new MyLinkedListGen<>();
+        myLinkedListGen1.add(9846);
+        myLinkedListGen1.add(7831);
+        myLinkedListGen1.add(6481);
+        myLinkedListGen1.add(586);
+        myLinkedListGen.addAll(myLinkedListGen1);
+        myLinkedListGen.printAll();
+        System.out.println("\n--- After deleting three-digit items: ");
+
+        myLinkedListGen.remove(6);
+        myLinkedListGen.remove(1);
+
+        myLinkedListGen.printAll();
+
         System.out.println("\n--------------------");
     }
 }
