@@ -6,13 +6,11 @@ public class MyArrayList {
     private int size;
     private int capacity;
     private String[] elements;
-    private String element;
 
     public MyArrayList() {
         capacity = 10;
         size = 0;
         elements = new String[capacity];
-        element = null;
     }
 
     public String[] getElements() {
@@ -34,29 +32,37 @@ public class MyArrayList {
 
     public String get(int index) {
         try {
-            for (int i = 0; i < this.elements.length; i++) {
-                if (this.elements[index].equals(this.elements[i])) {
-                    element = this.elements[i];
-                }
-            }
+
+            return elements[index];
+
         } catch (IndexOutOfBoundsException e) {
             e.printStackTrace();
         }
 
-        return element;
+        return null;
     }
 
     public void remove(int index) {
-        for (int i = index; i < this.elements.length - 1; i++) {
-            this.elements[i] = this.elements[i + 1];
+        try {
+            for (int i = index; i < this.size - 1; i++) {
+                this.elements[i] = this.elements[i + 1];
+            }
+            this.elements[size - 1] = null;
+            this.size--;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
         }
 
-        this.size--;
     }
 
     public void addAll(MyArrayList myArrayList) {
+        if (myArrayList.size + this.size > this.capacity) {
+            this.elements = Arrays.copyOf(this.elements, myArrayList.size + this.size);
+            this.capacity = this.elements.length;
+        }
+
         for (int i = 0; i < myArrayList.size; i++) {
-            this.add(myArrayList.get(i));
+            this.elements[this.size++] = myArrayList.get(i);
         }
     }
 }

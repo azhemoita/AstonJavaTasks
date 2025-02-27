@@ -20,6 +20,8 @@ public class Main {
         arrayList.add("second element");
         arrayList.add("third element");
         System.out.println(arrayList);
+        String first = arrayList.get(0);
+        System.out.println(first);
         arrayList.add(0, "before first element");
         System.out.println(arrayList);
         arrayList.add("last element");
